@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c5a35" />
+    <meta name="description" content="KKGT Import Export — Ethiopian coffee, agricultural inputs, farming, oilseeds and pulses." />
+    <link rel="icon" type="image/svg+xml" href="/kkgt-new-website/favicon.svg" />
+    <title>KKGT Import Export | From Ethiopian Soil to Global Markets</title>
+    <script>
+      (function (location) {
+        if (location.search[1] === '/') {
+          const decoded = location.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?')
+          window.history.replaceState(null, null,
+            location.pathname.slice(0, -1) + decoded + location.hash
+          )
+        }
+      }(window.location))
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
