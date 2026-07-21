@@ -7,7 +7,17 @@
       const responses = await Promise.all(files.map((file) => fetch(base + file, { cache: 'no-cache' })));
       const failed = responses.find((response) => !response.ok);
       if (failed) throw new Error(`Website script failed to load: HTTP ${failed.status}`);
-      const source = (await Promise.all(responses.map((response) => response.text()))).join('\n');
+
+      let source = (await Promise.all(responses.map((response) => response.text()))).join('\n');
+      source = source.replace(
+        /const IMAGES=\{[\s\S]*?\};\s*const nav=/,
+        'const IMAGES=window.IMAGES||{};\nconst nav=',
+      );
+
+      if (!source.includes('const IMAGES=window.IMAGES||{};')) {
+        throw new Error('Generated image data could not be connected to the website application.');
+      }
+
       new Function(source)();
     } catch (error) {
       console.error(error);
