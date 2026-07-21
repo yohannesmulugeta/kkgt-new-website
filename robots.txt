@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# This GitHub Pages website is a private testing preview.
+# Remove the disallow rule only after KKGT approves the final public content.
