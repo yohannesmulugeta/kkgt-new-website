@@ -1,34 +1,13 @@
 {
   "name": "kkgt-new-website",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
+  "description": "Zero-dependency GitHub Pages preview for KKGT Import Export.",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "lint": "eslint ."
+    "check": "node scripts/verify.mjs"
   },
-  "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "framer-motion": "latest",
-    "gsap": "latest",
-    "lucide-react": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-router-dom": "latest"
-  },
-  "devDependencies": {
-    "@eslint/js": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "eslint": "latest",
-    "eslint-plugin-react-hooks": "latest",
-    "eslint-plugin-react-refresh": "latest",
-    "globals": "latest",
-    "typescript": "latest",
-    "typescript-eslint": "latest",
-    "vite": "latest"
+  "engines": {
+    "node": ">=20"
   }
 }
