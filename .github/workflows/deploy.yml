@@ -6,10 +6,13 @@ on:
     paths:
       - project-update.b64
       - .github/workflows/deploy.yml
+  issues:
+    types: [opened]
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: kkgt-site-update
@@ -17,7 +20,7 @@ concurrency:
 
 jobs:
   apply-update:
-    if: github.actor != 'github-actions[bot]'
+    if: github.actor != 'github-actions[bot]' && (github.event_name != 'issues' || contains(github.event.issue.title, '[RUN KKGT UPDATE]'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -60,6 +63,46 @@ jobs:
           touch .nojekyll
           rm -f project-update.b64
 
+      - name: Install final verification workflow
+        shell: bash
+        run: |
+          cat > .github/workflows/deploy.yml <<'YAML'
+          name: Verify KKGT GitHub Pages build
+
+          on:
+            push:
+              branches: [main]
+            workflow_dispatch:
+
+          permissions:
+            contents: read
+
+          jobs:
+            verify:
+              runs-on: ubuntu-latest
+              steps:
+                - name: Checkout
+                  uses: actions/checkout@v4
+                - name: Setup Node
+                  uses: actions/setup-node@v4
+                  with:
+                    node-version: 22
+                    cache: npm
+                - name: Install locked dependencies
+                  run: npm ci
+                - name: Lint and build
+                  run: npm run check
+                - name: Confirm branch-root site is compiled
+                  run: |
+                    test -f index.html
+                    test -d assets
+                    grep -q '/kkgt-new-website/assets/' index.html
+                    if grep -q '/src/main.tsx' index.html; then
+                      echo 'Root index is still a Vite source file.'
+                      exit 1
+                    fi
+          YAML
+
       - name: Commit the improved source and compiled GitHub Pages site
         shell: bash
         run: |
@@ -73,3 +116,15 @@ jobs:
             git commit -m "Apply full KKGT audit improvements and local visuals [skip ci]"
             git push origin main
           fi
+
+      - name: Close trigger issue
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            })
