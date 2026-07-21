@@ -1,9 +1,9 @@
 :root{--photo-sprite:url('https://at.adobe.com/KxuDT42ReVJ8VQmb');--reference-width:1360px}
 .photo{position:relative;overflow:hidden;background-image:var(--photo-sprite);background-repeat:no-repeat;background-color:#0b5b38;background-attachment:scroll}
-.photo-hero-coffee,.photo-contact,.photo-origin-yirgacheffe{background-size:100% 240%;background-position:center 0}
-.photo-about-operations,.photo-quality,.photo-origin-limmu{background-size:200% auto;background-position:0 58.8%}
-.photo-coffee-export{background-size:400% auto;background-position:66.666% 58.8%}
-.photo-agrochemicals{background-size:400% auto;background-position:100% 58.8%}
+.photo-hero-coffee,.photo-contact,.photo-origin-yirgacheffe{background-size:auto 240%;background-position:center 0}
+.photo-about-operations,.photo-quality,.photo-origin-limmu{background-size:200% auto;background-position:0 56%}
+.photo-coffee-export{background-size:400% auto;background-position:66.666% 60%}
+.photo-agrochemicals{background-size:400% auto;background-position:100% 60%}
 .photo-coffee-farming,.photo-origin-sidama{background-size:300% auto;background-position:0 100%}
 .photo-commodities{background-size:300% auto;background-position:50% 100%}
 .photo-sustainability,.photo-origin-lekempti,.photo-origin-djimmah{background-size:300% auto;background-position:100% 100%}
