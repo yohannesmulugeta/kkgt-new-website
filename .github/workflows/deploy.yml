@@ -20,7 +20,10 @@ jobs:
           set -euo pipefail
           test -f index.html
           test -f 404.html
+          test -f robots.txt
+          test -f sitemap.xml
           test -f standalone/site.css
+          test -f standalone/audit-fixes.css
           test -f standalone/site-loader.js
           test -f standalone/site-1.js
           test -f standalone/site-4.js
@@ -28,9 +31,11 @@ jobs:
           test -f standalone/image-data-4.js
           test -f standalone/images/kkgt-logo.svg
           grep -q '/kkgt-new-website/standalone/site.css' index.html
+          grep -q '/kkgt-new-website/standalone/audit-fixes.css' index.html
           grep -q '/kkgt-new-website/standalone/site-loader.js' index.html
           grep -q 'var IMAGES=window.IMAGES' index.html
           grep -q 'const IMAGES=window.IMAGES' standalone/site-loader.js
+          grep -q 'Disallow: /' robots.txt
           if grep -q '/src/main.tsx' index.html; then
             echo 'The root page is still pointing to Vite source files.'
             exit 1
