@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 270" role="img" aria-labelledby="title desc">
+  <title id="title">KKGT Import Export</title>
+  <desc id="desc">Vector website version of the KKGT wordmark using the supplied orange and green brand colours.</desc>
+  <rect width="760" height="270" fill="#fff"/>
+  <g fill="#0b653d" transform="translate(38 18)">
+    <path d="M54 205C40 155 44 95 67 35l10 4c-19 58-21 112-8 162z"/>
+    <path d="M65 53C33 45 19 26 20 4c28 5 45 21 45 49z"/>
+    <path d="M72 83C105 71 124 50 127 25c-33 8-51 28-55 58z"/>
+    <path d="M57 105C28 98 11 81 7 58c30 2 48 18 50 47z"/>
+    <path d="M70 136C103 128 123 109 130 85c-33 4-54 22-60 51z"/>
+    <path d="M53 158C24 153 6 137 0 115c30 0 49 14 53 43z"/>
+    <path d="M67 190C98 184 119 168 129 145c-33 1-56 16-62 45z"/>
+  </g>
+  <text x="155" y="166" font-family="Arial Black,Arial,sans-serif" font-size="142" font-weight="900" letter-spacing="-10" fill="#ef671d">KKG</text>
+  <text x="585" y="166" font-family="Arial Black,Arial,sans-serif" font-size="142" font-weight="900" letter-spacing="-10" fill="#0b653d">T</text>
+  <text x="160" y="235" font-family="Arial Narrow,Arial,sans-serif" font-size="58" font-weight="800" letter-spacing="6" fill="#0b653d">IMPORT EXPORT</text>
+</svg>
