@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found | KKGT Import Export</title>
+<script>
+  const locationData = window.location;
+  const route = locationData.pathname
+    .replace('/kkgt-new-website/', '')
+    .replace(/&/g, '~and~');
+  locationData.replace(
+    `${locationData.protocol}//${locationData.host}/kkgt-new-website/?/${route}` +
+    (locationData.search ? `&${locationData.search.slice(1).replace(/&/g, '~and~')}` : '') +
+    locationData.hash
+  );
+</script>
+</head>
+<body></body>
+</html>
