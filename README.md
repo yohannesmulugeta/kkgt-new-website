@@ -1,6 +1,6 @@
 # KKGT New Website
 
-Professional testing website for KKGT Import Export, published directly through GitHub Pages.
+Professional testing website for KKGT Import Export, hosted entirely on GitHub Pages.
 
 ## Live website
 
@@ -8,7 +8,7 @@ https://yohannesmulugeta.github.io/kkgt-new-website/
 
 ## Published architecture
 
-The active preview is a zero-dependency static single-page website served directly from `main / (root)`. It does not require Vite, React, GSAP, Framer Motion or an application server to run.
+The active preview is a zero-dependency static single-page website. GitHub Actions verifies the source, packages only the public files and deploys the resulting artifact to GitHub Pages.
 
 - `index.html` — published application shell and testing-safe metadata
 - `404.html` — direct-route recovery for GitHub Pages
@@ -19,8 +19,9 @@ The active preview is a zero-dependency static single-page website served direct
 - `standalone/image-data-1.js` to `image-data-4.js` — generated local illustrative visuals
 - `standalone/images/kkgt-logo.svg` — local vector website logo
 - `scripts/verify.mjs` — zero-dependency publication and syntax verification
+- `.github/workflows/deploy.yml` — verification, packaging and GitHub Pages deployment
 
-The earlier React/Vite prototype remains in `src/` as design-development reference, but it is not loaded by the live GitHub Pages preview.
+The earlier React/Vite prototype remains in `src/` as design-development reference, but it is not loaded by the live preview.
 
 ## Generated visual set
 
@@ -69,6 +70,10 @@ npm run check
 ```
 
 No dependency installation is required.
+
+## GitHub Pages setting
+
+In **Settings → Pages**, use **GitHub Actions** as the publishing source. Every push to `main` then verifies and republishes the website automatically.
 
 ## Important content status
 
