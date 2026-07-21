@@ -30,6 +30,7 @@ jobs:
           grep -q '/kkgt-new-website/standalone/site.css' index.html
           grep -q '/kkgt-new-website/standalone/site-loader.js' index.html
           grep -q 'var IMAGES=window.IMAGES' index.html
+          grep -q 'const IMAGES=window.IMAGES' standalone/site-loader.js
           if grep -q '/src/main.tsx' index.html; then
             echo 'The root page is still pointing to Vite source files.'
             exit 1
