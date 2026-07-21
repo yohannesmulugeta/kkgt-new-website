@@ -21,25 +21,29 @@ jobs:
           test -f index.html
           test -f 404.html
           test -f standalone/site.css
+          test -f standalone/site-loader.js
           test -f standalone/site-1.js
           test -f standalone/site-4.js
           test -f standalone/image-data-1.js
           test -f standalone/image-data-4.js
           test -f standalone/images/kkgt-logo.svg
           grep -q '/kkgt-new-website/standalone/site.css' index.html
-          grep -q '/kkgt-new-website/standalone/site-4.js' index.html
+          grep -q '/kkgt-new-website/standalone/site-loader.js' index.html
+          grep -q 'var IMAGES=window.IMAGES' index.html
           if grep -q '/src/main.tsx' index.html; then
             echo 'The root page is still pointing to Vite source files.'
             exit 1
           fi
-      - name: Check JavaScript syntax
+          if grep -q 'standalone/site-1.js" defer' index.html; then
+            echo 'Split application files are being loaded directly instead of through the loader.'
+            exit 1
+          fi
+      - name: Check browser entry syntax
+        run: node --check standalone/site-loader.js
+      - name: Check concatenated application syntax
         shell: bash
         run: |
           cat standalone/site-1.js \
-              standalone/image-data-1.js \
-              standalone/image-data-2.js \
-              standalone/image-data-3.js \
-              standalone/image-data-4.js \
               standalone/site-2.js \
               standalone/site-3.js \
               standalone/site-4.js > /tmp/kkgt-site.js
